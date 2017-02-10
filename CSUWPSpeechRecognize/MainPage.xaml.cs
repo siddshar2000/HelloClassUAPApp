@@ -98,7 +98,8 @@ namespace CSUWPSpeechRecognize
 				   string recongnizeText = tbSearch.Text.ToString();
 				   System.Diagnostics.Debug.WriteLine("Speech recognize as text: " + recongnizeText);
 
-				   CallService.CallService.callService(recongnizeText);
+				   if (!String.IsNullOrEmpty(recongnizeText))
+					CallService.CallService.callService(recongnizeText);
 			   });
 
 			}
