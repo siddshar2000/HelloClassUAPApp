@@ -12,30 +12,9 @@ namespace CallService
 		{
 			using (var client = new HttpClient())
 			{
-				string strUri = "http://localhost:51636/api/go/" + command;
+				string strUri = "http://helloclassroom.azurewebsites.net/api/go/" + command;
 				
 				var result = await client.GetAsync(strUri);
-				string resultContent = await result.Content.ReadAsStringAsync();
-				System.Diagnostics.Debug.WriteLine(resultContent);
-			}
-		}
-		public static async void callPostService(string command)
-		{
-			using (var client = new HttpClient())
-			{
-				string strUri = "http://localhost:51636/";
-				client.BaseAddress = new Uri(strUri);
-				client.DefaultRequestHeaders.Accept.Clear();
-				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-				var content = new FormUrlEncodedContent(new[]
-				{
-					new KeyValuePair<string, string>("text", command)
-				});
-
-				// TODO: Check this.
-				//StringContent content = new StringContent(command);
-				var result = await client.PostAsync("api/go", content);
 				string resultContent = await result.Content.ReadAsStringAsync();
 				System.Diagnostics.Debug.WriteLine(resultContent);
 			}
